@@ -10,18 +10,18 @@ void Stack::Push(int val)
 
 int Stack::Pop()
 {
-	Node* temp;
 	if (top == nullptr)
 	{
 		return -1;
 	}
 	else
 	{
-		int popped_val = top->data;
-		Node* temp = top;
-		top = top->next; 
-		delete temp; 
-		return popped_val; 
+		const int tempVal = top->data;  
+		Node* oldtop = top; 
+		top = top->next;  
+		oldtop->next = nullptr; 
+		delete oldtop; 
+		return tempVal;  
 	}
 }
 
